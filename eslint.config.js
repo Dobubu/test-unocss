@@ -1,29 +1,28 @@
-import pluginVue from 'eslint-plugin-vue'
-import vueTsEslintConfig from '@vue/eslint-config-typescript'
-import pluginVitest from '@vitest/eslint-plugin'
-import pluginPlaywright from 'eslint-plugin-playwright'
+// eslint.config.mjs
+import antfu from "@antfu/eslint-config";
+import { FlatCompat } from "@eslint/eslintrc";
 
-export default [
-  {
-    name: 'app/files-to-lint',
-    files: ['**/*.{ts,mts,tsx,vue}'],
-  },
+const compat = new FlatCompat();
 
-  {
-    name: 'app/files-to-ignore',
-    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
-  },
-
-  ...pluginVue.configs['flat/essential'],
-  ...vueTsEslintConfig(),
-  
-  {
-    ...pluginVitest.configs.recommended,
-    files: ['src/**/__tests__/*'],
-  },
-  
-  {
-    ...pluginPlaywright.configs['flat/recommended'],
-    files: ['e2e/**/*.{test,spec}.{js,ts,jsx,tsx}'],
-  },
-]
+export default antfu(
+	{
+		stylistic: {
+			indent: "tab",
+			quotes: "double",
+			semi: true,
+		},
+		formatters: {
+			css: true,
+		},
+	},
+	...compat.config({
+		extends: [
+			"mischa2919",
+		],
+	}),
+	{
+		rules: {
+			eqeqeq: "error",
+		},
+	},
+);
