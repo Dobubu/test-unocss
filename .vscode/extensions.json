@@ -1,8 +1,8 @@
 {
-  "recommendations": [
-    "Vue.volar",
-    "vitest.explorer",
-    "ms-playwright.playwright",
-    "dbaeumer.vscode-eslint"
-  ]
+	"recommendations": [
+		"Vue.volar",
+		"vitest.explorer",
+		"ms-playwright.playwright",
+		"dbaeumer.vscode-eslint"
+	]
 }
